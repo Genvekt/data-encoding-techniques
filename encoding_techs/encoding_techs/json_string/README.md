@@ -1,6 +1,6 @@
 # JSON string
 
-Json is a textual format for data transfer. 
+Json is a textual format for data transfer and storage. 
 
 ## Encoding 
 
@@ -30,3 +30,5 @@ result = json.dumps(person).encode("utf-8")
 As the result, the JSON above encodes as 85 bytes sequence:
 
 ![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/json_string.png)
+
+Noticeable, how useful information (yellow) owercrouded with repetitive info (purple and green)

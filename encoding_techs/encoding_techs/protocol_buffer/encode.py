@@ -7,5 +7,5 @@ if __name__ == "__main__":
     person.favorite_number = 1337
     person.interests.extend(["coding", "coffee"])
 
-    print(":".join("{:02x}".format(c) for c in person.SerializeToString()))
-    print(len(":".join("{:02x}".format(c) for c in person.SerializeToString()).split(":")))
+    result = person.SerializeToString()
+    print(":".join("{:02x}".format(c) for c in result))
