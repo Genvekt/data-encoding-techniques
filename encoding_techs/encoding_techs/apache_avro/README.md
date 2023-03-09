@@ -8,25 +8,24 @@ pip install avro
 ```
 
 ## Encoding
-Avro uses special .avsc files for schema specification. Field types are defined in schema as well,
-so encoded string contains only value.
+Avro uses JSON schema specification, that can be written into .avsc file. 
+Field types are defined in schema as well, so encoded string contains only values and
+meaningful only with reading schema.
 
 1. Person schema we want will be defined as next person.avsc file in JSON style:
 ```
-struct Person {
-    1: required string user_name,
-    2: optional i64 favorite_number,
-    3: optional list<string> interests
+{
+    "type": "record",
+    "name": "Person",
+    "fields": [
+        {"name": "user_name", "type": "string"},
+        {"name": "favorite_number",  "type": ["int", "null"]},
+        {"name": "interests", "type": {"type": "array", "items": "string"}}
+    ]
 }
 ```
-2. Special .py files must be generated from defined person.thrift with next command (from current dir):
-```bash
-thrift -r --gen py person.thrift 
-```
 
-3. `Person` class then can be imported from resulted `gen-py/person/ttypes.py`. Rename `gen-py` to smth like `gen_py`, otherwise import brakes)))
-
-### BinaryProtocol
+2. Schema may be then used inside python code to encode data:
 
 ```python
 import avro.schema
