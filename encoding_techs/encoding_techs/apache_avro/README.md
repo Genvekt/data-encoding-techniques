@@ -50,8 +50,10 @@ writer.write(
 result = bytes_writer.getvalue()
 ```
 The resulting byte-string (27 bytes long):
+
 ![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/avro_string.png)
 
 
 Decomposition according to [specification](https://avro.apache.org/docs/1.10.2/spec.html#binary_encoding):
+
 ![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/avro.png)
