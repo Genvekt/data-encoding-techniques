@@ -49,24 +49,9 @@ writer.write(
 )
 result = bytes_writer.getvalue()
 ```
-The resulting byte-string:
-```
-0e:45:76:67:65:6e:69:61:00:f2:14:04:0c:63:6f:64:69:6e:67:0c:63:6f:66:66:65:65:00
-```
+The resulting byte-string (27 bytes long):
+![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/avro_string.png)
 
-It is 27 bytes long and translates as follows according to [specification](https://avro.apache.org/docs/1.10.2/spec.html#binary_encoding)
 
-```
-0e - [0 0001110] -> [1110] -> 7 len (Zigzag notation)
-      ^ 
-  this is the last byte of varint
-45:76:67:65:6e:69:61 - Evgenia in ASCII
-00 - 0th type in union specification (int according to out schema)
-f2:14 - [1 1110010 | 0 0010100] -> [00101001110010] -> 1337 (ZigZag notation)
-04 - [0 0000100] -> [100] -> 2 len (Zigzag notation)
-0c - [0 0001100] -> [1100] -> 6 len (Zigzag notation)
-63:6f:64:69:6e:67 - coding in ASCII
-0c - [0 0001100] -> [1100] -> 6 len (Zigzag notation)
-63:6f:66:66:65:65 - coffee in ASCII
-00 - end of array
-```
+Decomposition according to [specification](https://avro.apache.org/docs/1.10.2/spec.html#binary_encoding):
+![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/avro.png)
