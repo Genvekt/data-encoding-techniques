@@ -50,31 +50,13 @@ person.write(protocol)
 result = trans.getvalue()
 ```
 
-Result is the next byte-string in hex format:
+Result is the next 54 byte sequence in hex format:
 
-```
-0b:00:01:00:00:00:07:45:76:67:65:6e:69:61:0a:00:02:00:00:00:00:00:00:05:39:0f:00:03:0b:00:00:00:02:00:00:00:06:63:6f:64:69:6e:67:00:00:00:06:63:6f:66:66:65:65:00
-```
+![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/thrift_binary_string.png)
 
-```
-0b - type 11 (string)
-00:01 - tag 1
-00:00:00:07 - len 7
-45:76:67:65:6e:69:61 - Evgenia in ASCII
-0a - type 10 (int 64)
-00:02 - tag 2
-00:00:00:00:00:00:05:39 - 1337 in base 2
-0f - type 15 (ist)
-00:03 - tag 3
-0b - item type 11 (string)
-00:00:00:02 - 2 items
-00:00:00:06 - len 6
-63:6f:64:69:6e:67 - coding in ASCII
-00:00:00:06 - len 6
-63:6f:66:66:65:65 - coffee in ASCII
-00 - end of struct
-```
-54 bytes long
+Decomposition according to [specification](https://github.com/apache/thrift/blob/master/doc/specs/thrift-binary-protocol.md):
+
+![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/thrift_binary.png)
 
 ### CompactProtocol
 ```python

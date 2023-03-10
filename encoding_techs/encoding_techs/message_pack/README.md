@@ -13,7 +13,7 @@ In Python, `msgpack` library provides the necessary functionality:
 
 JSON to encode:
 ```json
-person = {
+{
   "user_name": "Evgenia",
   "favourite_number": 1337,
   "interests": ["coding", "coffee"]
@@ -23,6 +23,11 @@ person = {
 #### Encoding process:
 ```python
 import msgpack
+person = {
+  "user_name": "Evgenia",
+  "favourite_number": 1337,
+  "interests": ["coding", "coffee"]
+}
 result = msgpack.dumps(person)
 ```
 
