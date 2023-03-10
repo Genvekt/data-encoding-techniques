@@ -8,7 +8,7 @@ folder are:
 - `README.md` - full description of method usage in python and its internal structure
 - `encode.py` - actual Python code to encode data. There is no decoding, 
 because all I needed is binary result to analyse.
-- `+` method specific files
+- `+` method specific files, including generated ones.
 
 ## Method comparison
 

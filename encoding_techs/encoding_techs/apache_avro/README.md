@@ -56,3 +56,5 @@ The resulting byte-string (27 bytes long):
 Decomposition according to [specification](https://avro.apache.org/docs/1.10.2/spec.html#binary_encoding):
 
 ![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/avro.png)
+
+Types are not defined in encoding. Instead, writer shema must be provided as well to decode data correctly.
