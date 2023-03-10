@@ -34,7 +34,7 @@ result = msgpack.dumps(person)
 #### Binary string analysis
 The result of encoding is next 63 bytes long sequence:
 
-![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/message_pach_string.png)
+![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/message_pack_string.png)
 
 Decomposition according to [specification](https://github.com/msgpack/msgpack/blob/master/spec.md#map-format-family):
 

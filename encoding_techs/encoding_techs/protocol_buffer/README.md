@@ -39,26 +39,12 @@ person.interests.extend(["coding", "coffee"])
 result = person.SerializeToString()
 ```
 
-Result is the next byte-string in hex format:
-```
-0a:07:45:76:67:65:6e:69:61:10:b9:0a:1a:06:63:6f:64:69:6e:67:1a:06:63:6f:66:66:65:65
-```
+Result is the following 28 bytes sequence in hex format:
 
-## Analysis
+![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/protobuffer_string.png)
 
-The resulting byte-string is 28 bytes long. It can be translated the next way:
-```
-0a                   -> [ 00001 | 010 ]  (tag 1, type 2 (str)) 
-07                   -> [ 0000 0111 ] (len 7)
-45:76:67:65:6e:69:61 -> Evgenia in ASCII
-10                   -> [ 00010 | 000 ] (tag 2, type 0 (varint))
-b9:0a                -> [ 1|011 1001 || 0|000 1010 ] -> [011 1001 || 000 1010] -> [ 000 1010 011 1001] -> 1337
-1a                   -> [00011 | 010 ] (tag 3, type 2 (str))
-06                   -> [ 0000 0110 ] (len 6)
-63:6f:64:69:6e:67    -> coding in ASCII
-1a                   -> [00011 | 010 ] (tag 3, type 2 (str))
-06                   -> [ 0000 0110 ] (len 6)
-63:6f:66:66:65:65    -> coffee in ASCII
-```
+Decomposition according to [specification]():
+
+![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/protobuffer.png)
 
 Data is meaningful only with schema, which maps tags into actual field names.
