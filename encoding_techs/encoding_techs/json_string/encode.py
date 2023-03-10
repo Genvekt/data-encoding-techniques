@@ -3,7 +3,7 @@ import json
 if __name__ == "__main__":
     person = {
         "user_name": "Evgenia",
-        "favourite_number": 1337,
+        "favorite_number": 1337,
         "interests": ["coding", "coffee"]
     }
     result = json.dumps(person).encode("utf-8")
