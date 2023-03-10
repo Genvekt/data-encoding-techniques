@@ -75,27 +75,11 @@ protocol = TCompactProtocol.TCompactProtocol(trans)
 person.write(protocol)
 result = trans.getvalue()
 ```
-Result is the next byte-string in hex format:
+Result is the next 29 bytes sequence in hex format:
 
-```
-18:07:45:76:67:65:6e:69:61:16:f2:14:19:28:06:63:6f:64:69:6e:67:06:63:6f:66:66:65:65:00
-```
-It translates the following way according to the [specification](https://github.com/apache/thrift/blob/master/doc/specs/thrift-compact-protocol.md):
-```
-18 -> [0001 | 1000] - tag 1, type 8 (string)
-07 -> len 7
-45:76:67:65:6e:69:61 -> Evgenia in ASCII
-16 -> [0001 | 0110] - tag 2 (+1), type 6 (i64)
-f2:14 -> [1 111001 0 |  0 0010100] -> [111001 | 0010100] -> [0010100 111001] -> 1337 in binary
-          ^        ^    ^
-  next not end   sign  this is the last
- 
-19 -> [0001 | 1001] - tag 3 (+1), type 9 (list)
-28 -> [0010 | 1000] - len 2, item type 8 (string)
-06 - len 6
-63:6f:64:69:6e:67 - coding in ASCII
-06 - len 6
-63:6f:66:66:65:65 - coffee in ASCII
-00 - struct end
-```
-29 bytes long
+![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/thrift_compact_string.png)
+
+Decomposition according to the [specification](https://github.com/apache/thrift/blob/master/doc/specs/thrift-compact-protocol.md):
+
+![](https://raw.githubusercontent.com/Genvekt/data-encoding-techniques/main/images/thrift_compact.png)
+
